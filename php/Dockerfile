@@ -33,4 +33,4 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
 # Install vim
 RUN apt-get install -y vim
 
-WORKDIR /src
+WORKDIR /var/www
