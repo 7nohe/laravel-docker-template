@@ -14,7 +14,7 @@ services:
     build: ./php
     container_name: "laravel-php"
     volumes:
-      - ./src:/src
+      - ./src:/var/www
 
   mysql:
     image: mysql
