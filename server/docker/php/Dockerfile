@@ -25,12 +25,20 @@ RUN apt-get update \
     && docker-php-ext-install pdo_mysql
 
 # Install Node.js
+RUN apt-get install -y --no-install-recommends gcc make libpng-dev
 RUN apt-get install -y curl software-properties-common gnupg
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - \
     && apt-get update \
     && apt-get install -y nodejs
 
 # Install vim
 RUN apt-get install -y vim
 
+# Install xdebug
+ARG INSTALL_XDEBUG=false
+
+RUN if [ ${INSTALL_XDEBUG} = true ]; then \
+    pecl install xdebug \
+;fi
+    
 WORKDIR /var/www
