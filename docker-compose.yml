@@ -22,17 +22,15 @@ services:
       - ./:/var/www
       - ./server/docker/php/php.ini:/usr/local/etc/php/php.ini
 
-  mysql:
-    image: mysql
-    container_name: "laravel-mysql"
-    volumes:
-      - mysql-data:/var/lib/mysql
+  postgres:
     restart: always
+    image: postgres:alpine
+    container_name: "laravel-postgres"
     environment:
-      MYSQL_DATABASE: root
-      MYSQL_ROOT_PASSWORD: root
-    ports: 
-      - 13306:3306
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - 15432:5432
 
   redis:
     image: redis:alpine
